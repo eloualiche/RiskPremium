@@ -3,10 +3,10 @@
 
 ## STANDARD EXCLUSIONS
 archive
-doc/*.lyx
+docs/*.lyx
 tmp
 .Rhistory
 
 # Specific files
-doc/dividendpriceratio.tex
+docs/dividendpriceratio.tex
 input/msi.sas7bdat

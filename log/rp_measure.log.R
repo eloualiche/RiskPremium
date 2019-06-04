@@ -36,7 +36,7 @@ Type 'q()' to quit R.
 Log file for code executed at
 
 > message(format(Sys.time(), "%a %b %d %X %Y"))
-Tue Jun 04 14:33:17 2019
+Tue Jun 04 15:34:42 2019
 > ##################################################################################
 > 
 > 
@@ -237,8 +237,6 @@ Notes:               ***Significant at the 1 percent level.
 > 
 > ##################################################################################
 > 
-> 
-> 
 > proc.time()
    user  system elapsed 
-  2.539   0.266   2.953 
+  2.823   0.230   3.229 
