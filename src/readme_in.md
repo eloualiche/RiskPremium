@@ -1,10 +1,13 @@
-# Measuring the Risk Premium
+# Measuring the Market Risk Premium
 
-This code updates the measure of equity risk premium from the paper *Buyout Activity: the Impact of Aggregate Discount Rates* Valentin Haddad, Erik Loualiche & Matthew Plosser.
+This code updates the measure of equity risk premium from the paper **Buyout Activity: the Impact of Aggregate Discount Rates** in the *Journal of Finance*
+
+Authors: Valentin Haddad, Erik Loualiche & Matthew Plosser.
+
 We use the dividend-price ratio, cay and the three-month T-bill to predict future excess returns
 
-[Download the paper](http://loualiche.gitlab.io/www/abstract/LBO.html)
-[Download the data](https://github.com/eloualiche/RiskPremium/releases)
++ [Download the paper](http://loualiche.gitlab.io/www/abstract/LBO.html)
++ [Download the data](https://github.com/eloualiche/RiskPremium/releases)
 
 
 ## Data Sources
