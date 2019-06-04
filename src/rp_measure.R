@@ -22,8 +22,8 @@ message(format(Sys.time(), "%a %b %d %X %Y"))
 # APPEND REQUIRED PACKAGES
 library(crayon)
 library(devtools)
-
-# library(ggplot2)
+library(wesanderson)
+library(ggplot2)
 library(statar)
 library(stringr)
 library(lubridate)
@@ -72,4 +72,35 @@ dt_exp_rmrf <- cbind(dt_predict[!is.na(rmrf_y3), -c("datem")], exp_rmrf = predic
 
 fwrite(dt_exp_rmrf, "./output/predict.csv")
 ##################################################################################
+
+
+##################################################################################
+# PLOT
+dt_plot <- dt_exp_rmrf[, .(date=as.Date(ISOdate(str_sub(dateym,1, 4), str_sub(dateym, 5, 6), 1)), 
+	dp, cay, rf, rmrf_y3, exp_rmrf)]
+dt_plot
+
+p0 <- dt_plot[, .(date, dp, cay, rf, rmrf_y3) ] %>% 
+    melt(id.vars="date") %>%
+	ggplot(aes(date, value, colour = variable)) + 
+	geom_line(alpha=0.75, size=0.25) + geom_point(shape=1, size = 1, alpha=0.5) + 
+	theme_bw()
+# p0
+
+p1 <- dt_plot[, .(date, exp_rmrf, rmrf_y3) ] %>% 
+ 	melt(id.vars="date") %>%
+	ggplot(aes(date, 100*value, colour = variable)) + 
+	geom_line(alpha=0.75, size=0.25) + geom_point(shape=1, size = 1, alpha=0.5) + 
+	xlab("") + ylab("Returns (percent)") + 
+	theme_bw() +
+	theme(legend.position = c(0.3, 0.9)) + 
+	scale_colour_manual(name  = "",
+                        breaks = c("exp_rmrf", "rmrf_y3"),
+                        values = c(wes_palette("Zissou1")[1], wes_palette("Zissou1")[5]),
+                        labels=c("Expected", "Realized")) + 
+	guides(colour = guide_legend(nrow = 1))
+
+ggsave("./output/predict.png", p1, width = 8, height=6)
+
+
 

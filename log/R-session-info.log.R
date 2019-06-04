@@ -89,7 +89,7 @@
  devtools    * 1.13.6     2018-06-27 CRAN (R 3.5.1)                       
  digest        0.6.15     2018-01-28 CRAN (R 3.5.1)                       
  dplyr         0.8.0.9010 2019-03-31 Github (tidyverse/dplyr@6832c62)     
- ggplot2       3.1.0.9000 2019-03-31 Github (tidyverse/ggplot2@230e8f7)   
+ ggplot2     * 3.1.0.9000 2019-03-31 Github (tidyverse/ggplot2@230e8f7)   
  glue          1.3.0      2018-07-17 CRAN (R 3.5.1)                       
  graphics    * 3.5.1      2018-08-05 local                                
  grDevices   * 3.5.1      2018-08-05 local                                
@@ -124,6 +124,7 @@
  tools         3.5.1      2018-08-05 local                                
  utils       * 3.5.1      2018-08-05 local                                
  vctrs         0.1.0.9003 2019-05-19 Github (r-lib/vctrs@b1e6b81)         
+ wesanderson * 0.3.6      2018-04-20 CRAN (R 3.5.1)                       
  withr         2.1.2      2018-03-15 CRAN (R 3.5.1)                       
  zeallot       0.1.0      2018-01-28 CRAN (R 3.5.1)                       
  zoo         * 1.8-3      2018-07-16 CRAN (R 3.5.1)                       

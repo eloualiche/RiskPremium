@@ -1,5 +1,8 @@
 # Measuring the Market Risk Premium
 
+![](output/predict.png)
+
+
 This code updates the measure of equity risk premium from the paper **Buyout Activity: the Impact of Aggregate Discount Rates** in the *Journal of Finance*
 
 Authors: Valentin Haddad, Erik Loualiche & Matthew Plosser.
