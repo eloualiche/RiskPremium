@@ -11,7 +11,7 @@ all: output/predict.csv readme.md
 
 ## DOWNLOAD THE DATA FROM WRDS
 input/msi.sas7bdat: 
-	rsync -aPvzh --stats --human-readable  eloualic@wrds-cloud.wharton.upenn.edu:/wrds/crsp/sasdata/a_stock/msi.sas7bdat ./input/
+	rsync -aPvzh --stats --human-readable  XXXX@wrds-cloud.wharton.upenn.edu:/wrds/crsp/sasdata/a_stock/msi.sas7bdat ./input/
 
 ## GENERATE PREDICTORS
 tmp/predict.csv: src/import_predictors.R input/cay_current.csv input/msi.sas7bdat
