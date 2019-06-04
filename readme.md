@@ -7,6 +7,9 @@
 )
 3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on May 29 2019*
 
+## Download the data 
+
+The list of current and older version of the data is available [here for download](https://github.com/eloualiche/RiskPremium/releases)
 
 ## Latest estimates 
 
