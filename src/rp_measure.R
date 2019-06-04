@@ -78,7 +78,8 @@ fwrite(dt_exp_rmrf, "./output/predict.csv")
 # PLOT
 dt_plot <- dt_exp_rmrf[, .(date=as.Date(ISOdate(str_sub(dateym,1, 4), str_sub(dateym, 5, 6), 1)), 
 	dp, cay, rf, rmrf_y3, exp_rmrf)]
-dt_plot
+dt_plot[]
+
 
 p0 <- dt_plot[, .(date, dp, cay, rf, rmrf_y3) ] %>% 
     melt(id.vars="date") %>%
@@ -99,8 +100,10 @@ p1 <- dt_plot[, .(date, exp_rmrf, rmrf_y3) ] %>%
                         values = c(wes_palette("Zissou1")[1], wes_palette("Zissou1")[5]),
                         labels=c("Expected", "Realized")) + 
 	guides(colour = guide_legend(nrow = 1))
-
 ggsave("./output/predict.png", p1, width = 8, height=6)
+##################################################################################
 
+
+##################################################################################
 
 

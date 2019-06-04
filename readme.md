@@ -3,12 +3,11 @@
 ![](output/predict.png)
 
 
-This code updates the measure of equity risk premium from the paper **Buyout Activity: the Impact of Aggregate Discount Rates** in the *Journal of Finance*
-
-Authors: Valentin Haddad, Erik Loualiche & Matthew Plosser.
+This code updates the measure of equity risk premium.
 
 We use the dividend-price ratio, cay and the three-month T-bill to predict future excess returns
 
++ *Haddad Valentin, Erik Loualiche, and Matthew Plosser*: **Buyout Activity: the Impact of Aggregate Discount Rates**;  Journal of Finance, February 2017, 72:1
 + [Download the paper](http://loualiche.gitlab.io/www/abstract/LBO.html)
 + [Download the data](https://github.com/eloualiche/RiskPremium/releases)
 
