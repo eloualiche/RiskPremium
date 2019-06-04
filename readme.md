@@ -1,15 +1,22 @@
 # Measuring the Risk Premium
 
+This code updates the measure of equity risk premium from the paper *Buyout Activity: the Impact of Aggregate Discount Rates* Valentin Haddad, Erik Loualiche & Matthew Plosser.
+We use the dividend-price ratio, cay and the three-month T-bill to predict future excess returns
+
+[Download the paper](http://loualiche.gitlab.io/www/abstract/LBO.html)
+[Download the data](https://github.com/eloualiche/RiskPremium/releases)
+
+
+## Data Sources
+
 1. Measuring Dividend Price ratio uses CRSP Monthly Index files available on [WRDS](https://wrds-web.wharton.upenn.edu/wrds/ds/crsp/stock_a/stkmktix.cfm)
    - `msi.sas7bdat` downloaded from `/wrds/crsp/sasdata/a_stock/msi.sas7bdat`
-   - See our [note](./doc/dividendpriceratio.pdf) on how to account for reinvested dividends
+   - See the calculations to account for reinvested dividends in this [note](./doc/dividendpriceratio.pdf) on how 
 2. Measuring the risk-free rate from H15 release available on [FRED](https://fred.stlouisfed.org/series/TB3MS
 )
 3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on May 29 2019*
 
-## Download the data 
 
-The list of current and older version of the data is available [here for download](https://github.com/eloualiche/RiskPremium/releases)
 
 ## Latest estimates 
 
