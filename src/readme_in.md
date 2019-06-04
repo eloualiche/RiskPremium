@@ -16,7 +16,7 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
 
 1. Measuring Dividend Price ratio uses CRSP Monthly Index files available on [WRDS](https://wrds-web.wharton.upenn.edu/wrds/ds/crsp/stock_a/stkmktix.cfm)
    - `msi.sas7bdat` downloaded from `/wrds/crsp/sasdata/a_stock/msi.sas7bdat`
-   - See the calculations to account for reinvested dividends in this [note](./doc/dividendpriceratio.pdf) on how 
+   - See the calculations to account for reinvested dividends in this [note](./docs/dividendpriceratio.pdf) on how 
 2. Measuring the risk-free rate from H15 release available on [FRED](https://fred.stlouisfed.org/series/TB3MS
 )
 3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on May 29 2019*
