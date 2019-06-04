@@ -1,0 +1,12 @@
+# .gitignore file for RiskPremium Repo
+
+
+## STANDARD EXCLUSIONS
+archive
+doc/*.lyx
+tmp
+.Rhistory
+
+# Specific files
+doc/dividendpriceratio.tex
+input/msi.sas7bdat
