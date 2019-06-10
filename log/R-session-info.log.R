@@ -10,7 +10,7 @@
  language (EN)                        
  collate  en_US.UTF-8                 
  tz       America/New_York            
- date     2019-06-04                  
+ date     2019-06-10                  
 
  package     * version    date       source                               
  alfred      * 0.1.6      2018-04-06 CRAN (R 3.5.1)                       
@@ -75,7 +75,7 @@
  language (EN)                        
  collate  en_US.UTF-8                 
  tz       America/New_York            
- date     2019-06-04                  
+ date     2019-06-10                  
 
  package     * version    date       source                               
  assertthat    0.2.0      2017-04-11 CRAN (R 3.5.1)                       

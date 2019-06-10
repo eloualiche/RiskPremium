@@ -76,7 +76,8 @@ fwrite(dt_exp_rmrf, "./output/predict.csv")
 
 ##################################################################################
 # PLOT
-dt_plot <- dt_exp_rmrf[, .(date=as.Date(ISOdate(str_sub(dateym,1, 4), str_sub(dateym, 5, 6), 1)), 
+dt_plot <- dt_exp_rmrf[, .(
+	date=as.Date(ISOdate(str_sub(dateym,1, 4), 3*as.integer(str_sub(dateym, 5, 6)), 1)), 
 	dp, cay, rf, rmrf_y3, exp_rmrf)]
 dt_plot[]
 
