@@ -10,3 +10,6 @@ tmp
 # Specific files
 docs/dividendpriceratio.tex
 input/msi.sas7bdat
+
+# Sources
+src/paymon.R

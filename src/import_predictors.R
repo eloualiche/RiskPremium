@@ -63,7 +63,9 @@ dt_tbill <- dt_tbill[, .(dateym=year(date)*100+month(date), rf=rf/100)]
 ##################################################################################
 # 2. CAY
 dt_cay <- fread("./input/cay_current.csv", skip=1, header=T)
-dt_cay <- dt_cay[, .(dateym=as.integer(str_sub(date, 1, 6)), cay=cay) ]
+dt_cay <- dt_cay[, .(date_y=as.integer(str_sub(date, 1, 4)), 
+	                 quarter=as.integer(str_sub(date, 5, 6)), cay=cay) ]
+dt_cay <- dt_cay[, .(dateym=date_y*100+quarter*3, cay) ]
 dt_cay
 ##################################################################################
 
@@ -113,7 +115,8 @@ dt_rmrf[ !is.na(rmrf_y3) ]
 dt_predict <- merge(dt_dp, dt_tbill, by = c("dateym"))
 dt_predict <- merge(dt_predict, dt_rmrf, by = c("dateym"), all.x = T)
 dt_predict <- merge(dt_predict, dt_cay, by = c("dateym"), all.x = T)
-dt_predict <- dt_predict[ !is.na(rmrf_y3) & !is.na(cay) ]
+dt_predict <- dt_predict[ !is.na(rmrf_y3) ]
+dt_predict <- dt_predict[ !is.na(cay) ]
 dt_predict[]
 
 fwrite(dt_predict, "./tmp/predict.csv")

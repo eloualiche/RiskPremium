@@ -2,7 +2,7 @@
 # Makefile for PREDICTING THE EQUITY RISK PREMIUM
 #
 # Created       on June  04th 2019
-# Last modified on April 04th 2019
+# Last modified on June  14th 2019
 ## --------------------------------------------------------------------------------------------------------
 
 
@@ -14,10 +14,12 @@ all: output/predict.csv readme.md
 ## DOWNLOAD THE DATA FROM WRDS
 input/msi.sas7bdat: 
 	rsync -aPvzh --stats --human-readable  XXXX@wrds-cloud.wharton.upenn.edu:/wrds/crsp/sasdata/a_stock/msi.sas7bdat ./input/
+	@echo
 
 ## GENERATE PREDICTORS
 tmp/predict.csv: src/import_predictors.R input/cay_current.csv input/msi.sas7bdat
 	R CMD BATCH $(R_OPTS) src/import_predictors.R log/import_predictors.log.R
+	@echo
 
 ## RUN REGRESSIONS
 output/predict.csv: src/rp_measure.R tmp/predict.csv
@@ -27,6 +29,7 @@ output/predict.csv: src/rp_measure.R tmp/predict.csv
 ## OUTPUT RESULTS
 readme.md: src/readme_in.md 
 	cat src/readme_in.md tmp/reg_update.txt > readme.md
+	@echo
 
 ##
 ## --------------------------------------------------------------------------------------------------------
