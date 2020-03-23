@@ -20,17 +20,23 @@ message(format(Sys.time(), "%a %b %d %X %Y"))
 
 ##################################################################################
 # APPEND REQUIRED PACKAGES
-library(crayon)
-library(devtools)
-library(wesanderson)
-library(ggplot2)
-library(statar)
-library(stringr)
-library(lubridate)
-library(data.table)
-library(lmtest)
-library(sandwich)
-library(stargazer)
+
+# See this https://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them
+using<-function(...) {
+    libs<-unlist(list(...))
+    req<-unlist(lapply(libs,require,character.only=TRUE))
+    need<-libs[req==FALSE]
+    if(length(need)>0){ 
+        install.packages(need)
+        lapply(need,require,character.only=TRUE)
+    }
+}
+
+package_to_load <- c("crayon", "devtools", "wesanderson", "ggplot2", "statar", 
+	"stringr", "lubridate", "lmtest", "sandwich", "stargazer", "data.table")
+
+using(package_to_load)
+
 
 check_file = file.exists("log/R-session-info.log.R")
 sink("log/R-session-info.log.R", append=check_file)

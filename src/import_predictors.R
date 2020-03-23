@@ -32,17 +32,21 @@ message(format(Sys.time(), "%a %b %d %X %Y"))
 
 ##################################################################################
 # APPEND REQUIRED PACKAGES
-library(crayon)
-library(devtools)
 
-library(alfred)
-library(haven)
-library(dplyr)
-library(stringr)
-library(lubridate)
-library(RcppRoll)
-library(statar)
-library(data.table)
+# See this https://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them
+using<-function(...) {
+    libs<-unlist(list(...))
+    req<-unlist(lapply(libs,require,character.only=TRUE))
+    need<-libs[req==FALSE]
+    if(length(need)>0){ 
+        install.packages(need)
+        lapply(need,require,character.only=TRUE)
+    }
+}
+
+package_to_load <- c("crayon", "devtools", "alfred", "haven", "dplyr", 
+	"stringr", "lubridate", "RcppRoll", "statar", "data.table")
+using(package_to_load)
 
 check_file = file.exists("log/R-session-info.log.R")
 sink("log/R-session-info.log.R", append=check_file)
@@ -54,19 +58,20 @@ sink()
 
 ##################################################################################
 # 1. TREASURIES
-dt_tbill <- get_fred_series("TB3MS", "rf", observation_start = "1950-01-01", observation_end = "2019-05-31") %>% data.table
+dt_tbill <- get_fred_series("TB3MS", "rf", observation_start = "1950-01-01", observation_end = "2020-12-31") %>% data.table
 dt_tbill <- dt_tbill[, .(dateym=year(date)*100+month(date), rf=rf/100)]
+dt_tbill[]
 # fwrite(dt_tbill, "./input/tbill.csv")
 ##################################################################################
 
 
 ##################################################################################
 # 2. CAY
-dt_cay <- fread("./input/cay_current.csv", skip=1, header=T)
-dt_cay <- dt_cay[, .(date_y=as.integer(str_sub(date, 1, 4)), 
-	                 quarter=as.integer(str_sub(date, 5, 6)), cay=cay) ]
-dt_cay <- dt_cay[, .(dateym=date_y*100+quarter*3, cay) ]
-dt_cay
+dt_cay <- fread("./input/cay_current.csv", skip=0, header=T)
+setnames(dt_cay, c("date", "c", "w", "y", "cay"))
+dt_cay <- dt_cay[, .(date_y=year(date), month = month(date), cay) ]
+dt_cay <- dt_cay[, .(dateym=date_y*100+month, cay) ]
+dt_cay[]
 ##################################################################################
 
 

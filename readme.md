@@ -19,7 +19,7 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
    - See the calculations to account for reinvested dividends in this [note](./docs/dividendpriceratio.pdf) on how 
 2. Measuring the risk-free rate from H15 release available on [FRED](https://fred.stlouisfed.org/series/TB3MS
 )
-3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on May 29 2019*
+3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on March 23rd 2020*
 
 
 
@@ -30,21 +30,21 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
 ===========================================================
                              Future Excess Returns         
 -----------------------------------------------------------
-D/P ratio                           2.833***               
-                                    (0.419)                
+D/P ratio                           3.411***               
+                                    (0.437)                
                                                            
-cay                                 2.270***               
-                                    (0.233)                
+cay                                 1.873***               
+                                    (0.250)                
                                                            
-T-bill (three-month)               -1.152***               
-                                    (0.156)                
+T-bill (three-month)               -1.229***               
+                                    (0.163)                
                                                            
-Constant                             0.024*                
-                                    (0.013)                
+Constant                             0.008                 
+                                    (0.014)                
                                                            
-Observations                          256                  
-R2                                   0.423                 
-F Statistic                 61.652*** (df = 3; 252)        
+Observations                          260                  
+R2                                   0.351                 
+F Statistic                 46.061*** (df = 3; 256)        
 -----------------------------------------------------------
 Notes:               ***Significant at the 1 percent level.
                      **Significant at the 5 percent level. 

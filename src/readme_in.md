@@ -19,7 +19,7 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
    - See the calculations to account for reinvested dividends in this [note](./docs/dividendpriceratio.pdf) on how 
 2. Measuring the risk-free rate from H15 release available on [FRED](https://fred.stlouisfed.org/series/TB3MS
 )
-3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on May 29 2019*
+3. Measuring cay from Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html). *Last downloaded on March 23rd 2020*
 
 
 

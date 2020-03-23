@@ -1,6 +1,6 @@
 
-R version 3.5.1 (2018-07-02) -- "Feather Spray"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 3.6.2 (2019-12-12) -- "Dark and Stormy Night"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -36,16 +36,33 @@ Type 'q()' to quit R.
 Log file for code executed at
 
 > message(format(Sys.time(), "%a %b %d %X %Y"))
-Tue Aug 27 21:49:26 2019
+Mon Mar 23 09:00:04 2020
 > ##################################################################################
 > 
 > 
 > ##################################################################################
 > # APPEND REQUIRED PACKAGES
-> library(crayon)
-> library(devtools)
-> library(wesanderson)
-> library(ggplot2)
+> 
+> # See this https://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them
+> using<-function(...) {
++     libs<-unlist(list(...))
++     req<-unlist(lapply(libs,require,character.only=TRUE))
++     need<-libs[req==FALSE]
++     if(length(need)>0){ 
++         install.packages(need)
++         lapply(need,require,character.only=TRUE)
++     }
++ }
+> 
+> package_to_load <- c("crayon", "devtools", "wesanderson", "ggplot2", "statar", 
++ 	"stringr", "lubridate", "lmtest", "sandwich", "stargazer", "data.table")
+> 
+> using(package_to_load)
+Loading required package: crayon
+Loading required package: devtools
+Loading required package: usethis
+Loading required package: wesanderson
+Loading required package: ggplot2
 
 Attaching package: ‘ggplot2’
 
@@ -53,9 +70,9 @@ The following object is masked from ‘package:crayon’:
 
     %+%
 
-> library(statar)
-> library(stringr)
-> library(lubridate)
+Loading required package: statar
+Loading required package: stringr
+Loading required package: lubridate
 
 Attaching package: ‘lubridate’
 
@@ -63,16 +80,7 @@ The following object is masked from ‘package:base’:
 
     date
 
-> library(data.table)
-
-Attaching package: ‘data.table’
-
-The following objects are masked from ‘package:lubridate’:
-
-    hour, isoweek, mday, minute, month, quarter, second, wday, week,
-    yday, year
-
-> library(lmtest)
+Loading required package: lmtest
 Loading required package: zoo
 
 Attaching package: ‘zoo’
@@ -88,21 +96,29 @@ The following object is masked from ‘package:crayon’:
 
     reset
 
-> library(sandwich)
-> library(stargazer)
+Loading required package: sandwich
+Loading required package: stargazer
 
 Please cite as: 
 
  Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables.
  R package version 5.2.2. https://CRAN.R-project.org/package=stargazer 
 
+Loading required package: data.table
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:lubridate’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+> 
 > 
 > check_file = file.exists("log/R-session-info.log.R")
 > sink("log/R-session-info.log.R", append=check_file)
 > cat(bold("\n\n# -----\n# Session info for rp_measure.csv\n\n")) 
 > session_info()
-Session info ------------------------------------------------------------------
-Packages ----------------------------------------------------------------------
 > sink()
 > ##################################################################################
 > 
@@ -129,24 +145,24 @@ Packages ----------------------------------------------------------------------
                                                test                                test    
                               (1)               (2)               (3)               (4)    
 -------------------------------------------------------------------------------------------
-dp                         2.976***          2.976***          2.833***          2.833***  
-                            (0.415)           (1.016)           (0.419)           (1.081)  
+dp                         3.633***          3.633***          3.411***          3.411***  
+                            (0.441)           (1.075)           (0.437)           (1.133)  
                                                                                            
-cay                        2.561***          2.561***          2.270***          2.270***  
-                            (0.242)           (0.548)           (0.233)           (0.565)  
+cay                        2.156***          2.156***          1.873***          1.873***  
+                            (0.261)           (0.605)           (0.250)           (0.629)  
                                                                                            
-rf                         -0.861***         -0.861**          -1.152***         -1.152*** 
-                            (0.166)           (0.346)           (0.156)           (0.378)  
+rf                         -0.938***         -0.938**          -1.229***         -1.229*** 
+                            (0.177)           (0.364)           (0.163)           (0.381)  
                                                                                            
-Constant                    -0.001            -0.001            0.024*             0.024   
-                            (0.014)           (0.034)           (0.013)           (0.036)  
+Constant                    -0.019            -0.019             0.008             0.008   
+                            (0.015)           (0.037)           (0.014)           (0.037)  
                                                                                            
 -------------------------------------------------------------------------------------------
-Observations                  236                                 256                      
-R2                           0.463                               0.423                     
-Adjusted R2                  0.456                               0.416                     
-Residual Std. Error    0.069 (df = 232)                    0.070 (df = 252)                
-F Statistic         66.603*** (df = 3; 232)             61.652*** (df = 3; 252)            
+Observations                  236                                 260                      
+R2                           0.384                               0.351                     
+Adjusted R2                  0.376                               0.343                     
+Residual Std. Error    0.074 (df = 232)                    0.074 (df = 256)                
+F Statistic         48.180*** (df = 3; 232)             46.061*** (df = 3; 256)            
 ===========================================================================================
 Note:                                                           *p<0.1; **p<0.05; ***p<0.01
 > 
@@ -159,21 +175,21 @@ Note:                                                           *p<0.1; **p<0.05
 ===========================================================
                              Future Excess Returns         
 -----------------------------------------------------------
-D/P ratio                           2.833***               
-                                    (0.419)                
+D/P ratio                           3.411***               
+                                    (0.437)                
                                                            
-cay                                 2.270***               
-                                    (0.233)                
+cay                                 1.873***               
+                                    (0.250)                
                                                            
-T-bill (three-month)               -1.152***               
-                                    (0.156)                
+T-bill (three-month)               -1.229***               
+                                    (0.163)                
                                                            
-Constant                             0.024*                
-                                    (0.013)                
+Constant                             0.008                 
+                                    (0.014)                
                                                            
-Observations                          256                  
-R2                                   0.423                 
-F Statistic                 61.652*** (df = 3; 252)        
+Observations                          260                  
+R2                                   0.351                 
+F Statistic                 46.061*** (df = 3; 256)        
 -----------------------------------------------------------
 Notes:               ***Significant at the 1 percent level.
                      **Significant at the 5 percent level. 
@@ -199,18 +215,18 @@ Notes:               ***Significant at the 1 percent level.
 + 	date=as.Date(ISOdate(str_sub(dateym,1, 4), as.integer(str_sub(dateym, 5, 6)), 1)), 
 + 	dp, cay, rf, rmrf_y3, exp_rmrf)]
 > dt_plot[]
-           date         dp         cay     rf    rmrf_y3    exp_rmrf
-  1: 1952-03-01 0.05817138  0.01646544 0.0159 0.18092953 0.207727996
-  2: 1952-06-01 0.05739649  0.02551783 0.0170 0.21642173 0.224814274
-  3: 1952-09-01 0.05709103  0.01633620 0.0171 0.23193277 0.202990900
-  4: 1952-12-01 0.05522191  0.02542006 0.0209 0.22202729 0.213936934
-  5: 1953-03-01 0.05455042  0.02543387 0.0201 0.26058722 0.212987813
- ---                                                                
-252: 2014-12-01 0.02094913 -0.02747550 0.0003 0.09787760 0.020501440
-253: 2015-03-01 0.02111608 -0.03462231 0.0003 0.08734601 0.004750878
-254: 2015-06-01 0.02111542 -0.03462943 0.0002 0.09928718 0.004848069
-255: 2015-09-01 0.02153820 -0.02656083 0.0002 0.15268617 0.024361936
-256: 2015-12-01 0.02191271 -0.03519129 0.0023 0.07465740 0.003411385
+           date         dp         cay     rf    rmrf_y3   exp_rmrf
+  1: 1952-03-01 0.05817138  0.01510493 0.0159 0.18092953 0.21561991
+  2: 1952-06-01 0.05739649  0.02483727 0.0170 0.21642173 0.22985471
+  3: 1952-09-01 0.05709103  0.01484008 0.0171 0.23193277 0.20996430
+  4: 1952-12-01 0.05522191  0.02216598 0.0209 0.22202729 0.21264141
+  5: 1953-03-01 0.05455042  0.02152118 0.0201 0.26058722 0.21012652
+ ---                                                               
+256: 2015-12-01 0.02191273 -0.02350179 0.0023 0.07466284 0.03635076
+257: 2016-03-01 0.02265601 -0.02321807 0.0029 0.11699368 0.03867995
+258: 2016-06-01 0.02307582 -0.01823511 0.0027 0.11884748 0.04969115
+259: 2016-09-01 0.02297658 -0.01942223 0.0029 0.10353283 0.04688330
+260: 2016-12-01 0.02284611 -0.01902802 0.0051 0.11910203 0.04447305
 > 
 > 
 > p0 <- dt_plot[, .(date, dp, cay, rf, rmrf_y3) ] %>% 
@@ -240,4 +256,4 @@ Notes:               ***Significant at the 1 percent level.
 > 
 > proc.time()
    user  system elapsed 
-  2.563   0.196   2.694 
+  3.096   0.328   4.087 
