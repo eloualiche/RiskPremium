@@ -27,6 +27,7 @@ input/msi.sas7bdat:
 ## GENERATE PREDICTORS
 tmp/predict.csv: src/import_predictors.R input/cay_current.csv input/msi.sas7bdat
 	$(call colorecho,"Import and merge all return predictors ...")
+	mkdir -p tmp
 	R CMD BATCH $(R_OPTS) src/import_predictors.R log/import_predictors.log.R
 	@echo
 
