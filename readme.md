@@ -30,21 +30,21 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
 ===========================================================
                              Future Excess Returns         
 -----------------------------------------------------------
-D/P ratio                           3.411***               
-                                    (0.437)                
+D/P ratio                           3.370***               
+                                    (0.436)                
                                                            
-cay                                 1.873***               
-                                    (0.250)                
+cay                                 1.814***               
+                                    (0.246)                
                                                            
-T-bill (three-month)               -1.229***               
+T-bill (three-month)               -1.246***               
                                     (0.163)                
                                                            
-Constant                             0.008                 
-                                    (0.014)                
+Constant                             0.011                 
+                                    (0.013)                
                                                            
-Observations                          260                  
-R2                                   0.351                 
-F Statistic                 46.061*** (df = 3; 256)        
+Observations                          264                  
+R2                                   0.344                 
+F Statistic                 45.459*** (df = 3; 260)        
 -----------------------------------------------------------
 Notes:               ***Significant at the 1 percent level.
                      **Significant at the 5 percent level. 
