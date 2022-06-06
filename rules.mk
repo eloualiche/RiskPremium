@@ -36,7 +36,8 @@ endef
 # --------------------------------------------------------------------------------------------------------
 # This will depend on your configuration. Easiest is to symlin latest julia to /usr/bin/julia
 SHELL    := /bin/bash
-WRDS_USERNAME := XXXX # adjust your WRDS username here
+# adjust your WRDS username here
+WRDS_USERNAME := XXXX
 R_OPTS   := --vanilla
 # --------------------------------------------------------------------------------------------------------
 
