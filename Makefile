@@ -33,9 +33,9 @@ output/predict.csv: src/RiskPremium.jl tmp/predict.csv
 	@echo
 
 ## OUTPUT RESULTS
-readme.md: src/readme_in.md output/predict.pdf tmp/reg_update.txt
+readme.md: src/readme_input.txt output/predict.pdf tmp/reg_update.txt
 	$(call colorecho,"Update readme file ...")
-	cat src/readme_in.md tmp/reg_update.txt > readme.md
+	cat src/readme_input.txt tmp/reg_update.txt > readme.md
 	@echo
 
 ## TEST: validate against R reference

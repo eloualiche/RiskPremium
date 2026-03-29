@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:fred.stlouisfed.org)",
+      "WebFetch(domain:faculty.haas.berkeley.edu)"
+    ]
+  }
+}
