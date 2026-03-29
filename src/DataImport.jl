@@ -102,4 +102,41 @@ function compute_excess_returns(msi_path::String, tbill_df::DataFrame)
     return DataFrame(dateym = df.dateym, rmrf_y3 = rmrf_y3)
 end
 
+"""
+    build_predictors(msi_path, cay_path) -> DataFrame
+
+Full pipeline: compute D/P, download T-bill, compute excess returns,
+load CAY, merge all. Returns DataFrame with: dateym, dp, rf, rmrf_y3, cay.
+"""
+function build_predictors(msi_path::String, cay_path::String)
+    dp_df    = compute_dp(msi_path)
+    tbill_df = compute_tbill()
+    rmrf_df  = compute_excess_returns(msi_path, tbill_df)
+
+    # Load CAY (either Lettau's or our computed version)
+    cay_raw = CSV.read(cay_path, DataFrame; header=1)
+    rename!(cay_raw, Symbol.(["date", "c", "w", "y", "cay"]))
+    cay_raw.date = Date.(cay_raw.date)
+    cay_df = DataFrame(
+        dateym = year.(cay_raw.date) .* 100 .+ month.(cay_raw.date),
+        cay = cay_raw.cay,
+    )
+
+    # Merge
+    predict = innerjoin(dp_df, tbill_df, on=:dateym)
+    predict = innerjoin(predict, rmrf_df, on=:dateym)
+    predict = innerjoin(predict, cay_df, on=:dateym)
+    dropmissing!(predict)
+
+    return predict
+end
+
+# When run as script
+if abspath(PROGRAM_FILE) == @__FILE__
+    mkpath("tmp")
+    predict = build_predictors("output/msi.csv", "input/cay_computed.csv")
+    CSV.write("tmp/predict.csv", predict)
+    println("Wrote tmp/predict.csv: $(nrow(predict)) rows")
+end
+
 end # module

@@ -45,3 +45,19 @@ maxerr_rmrf = maximum(abs.(comp_rmrf.rmrf_y3 .- comp_rmrf.rmrf_ref))
 println("Excess return max absolute error: $maxerr_rmrf")
 @test maxerr_rmrf < 1e-10
 println("✓ Future excess returns match R output")
+
+# --- Test full merge ---
+predict = DataImport.build_predictors("output/msi.csv", "input/cay_current.csv")
+println("Built predict: $(nrow(predict)) obs")
+
+# Compare against R reference (264 obs)
+comp_full = innerjoin(ref, predict, on=:dateym, makeunique=true)
+println("Matched $(nrow(comp_full)) obs (R has $(nrow(ref)))")
+@test nrow(comp_full) == nrow(ref)
+
+for col in [:dp, :rf, :rmrf_y3, :cay]
+    local maxerr = maximum(abs.(comp_full[!, col] .- comp_full[!, Symbol(string(col, "_1"))]))
+    println("$col max error: $maxerr")
+    @test maxerr < 1e-6
+end
+println("✓ Full predictor merge validated")
