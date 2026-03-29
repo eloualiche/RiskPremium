@@ -16,3 +16,6 @@ src/paymon.R
 
 # Superpowers
 docs/superpowers
+
+# Environment
+.env
