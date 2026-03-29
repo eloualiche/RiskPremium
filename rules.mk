@@ -34,11 +34,8 @@ endef
 
 
 # --------------------------------------------------------------------------------------------------------
-# This will depend on your configuration. Easiest is to symlin latest julia to /usr/bin/julia
+# This will depend on your configuration. Easiest is to symlink latest julia to /usr/bin/julia
 SHELL    := /bin/bash
-# adjust your WRDS username here
-WRDS_USERNAME := XXXX
-R_OPTS   := --vanilla
 # --------------------------------------------------------------------------------------------------------
 
 
