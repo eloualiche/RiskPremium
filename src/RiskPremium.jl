@@ -1,8 +1,10 @@
 module RiskPremium
 
 using CSV, DataFrames, Dates, Statistics, LinearAlgebra
+using Plots
+pgfplotsx()
 
-export run_regression, format_table
+export run_regression, format_table, make_plot
 
 """
     newey_west_vcov(X, residuals; lag=12)
@@ -104,6 +106,40 @@ function _Φ(x)
     return 0.5 * (1.0 + erf(x / sqrt(2.0)))
 end
 
+"""
+    make_plot(predict)
+
+Plot expected vs realized excess returns. Uses Plots.jl with PGFPlotsX backend.
+"""
+function make_plot(predict::DataFrame)
+    dates = Date.(
+        div.(predict.dateym, 100),
+        mod.(predict.dateym, 100),
+        1
+    )
+
+    p = plot(dates, 100 .* predict.rmrf_y3;
+        label  = "Realized",
+        color  = :steelblue,
+        alpha  = 0.75,
+        lw     = 0.5,
+        marker = (:circle, 2, 0.5, :steelblue),
+        xlabel = "",
+        ylabel = "Returns (percent)",
+        legend = :topleft,
+    )
+    plot!(p, dates, 100 .* predict.exp_rmrf;
+        label  = "Expected",
+        color  = :indianred,
+        alpha  = 0.75,
+        lw     = 0.5,
+        marker = (:circle, 2, 0.5, :indianred),
+    )
+
+    savefig(p, "output/predict.pdf")
+    println("Wrote output/predict.pdf")
+end
+
 # When run as script
 if abspath(PROGRAM_FILE) == @__FILE__
     predict = CSV.read("tmp/predict.csv", DataFrame)
@@ -124,6 +160,8 @@ if abspath(PROGRAM_FILE) == @__FILE__
     mkpath("tmp")
     write("tmp/reg_update.txt", table)
     println("\nWrote output/predict.csv and tmp/reg_update.txt")
+
+    make_plot(predict)
 end
 
 end # module
