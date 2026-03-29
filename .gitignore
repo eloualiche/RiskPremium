@@ -13,3 +13,6 @@ input/msi.sas7bdat
 
 # Sources
 src/paymon.R
+
+# Superpowers
+docs/superpowers
