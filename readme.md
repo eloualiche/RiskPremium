@@ -1,4 +1,5 @@
-# Measuring the Market Risk Premium
+<h1 align="center">Measuring the Market Risk Premium</h1>
+<p align="center"><em>Last updated: March 2026</em></p>
 
 ![](output/predict.png)
 
