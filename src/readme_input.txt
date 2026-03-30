@@ -17,7 +17,7 @@ I use the dividend-price ratio, cay and the three-month T-bill to predict future
 
 **For the exact replication of the published paper, use [v1.0](https://github.com/eloualiche/RiskPremium/releases/tag/v1.0).** That release uses the original R pipeline with Lettau's cay downloaded directly from his [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html) (1952Q1–2019Q3). CRSP data through 2017Q4. Regression coefficients: D/P = 3.370, cay = 1.814, T-bill = −1.246, R² = 0.344 (264 obs).
 
-**For updated estimates, use [v2.0](https://github.com/eloualiche/RiskPremium/releases/tag/v2.0).** This release rewrites the pipeline in Julia and constructs cay from publicly available FRED data, removing the dependency on Lettau's website. CRSP data through 2024Q4. DOLS coefficients: β_a = 0.195, β_y = 0.863 (estimation sample: 1951Q4–2019Q3). Regression coefficients: D/P = 2.779, cay = 0.398, T-bill = −1.232, R² = 0.234 (285 obs). See the [construction of cay](#construction-of-cay) section below for validation details.
+**For updated estimates, use [v2-202603](https://github.com/eloualiche/RiskPremium/releases/tag/v2-202603).** This release rewrites the pipeline in Julia and constructs cay from publicly available FRED data, removing the dependency on Lettau's website. CRSP data through 2024Q4. DOLS coefficients: β_a = 0.195, β_y = 0.863 (estimation sample: 1951Q4–2019Q3). Regression coefficients: D/P = 2.779, cay = 0.398, T-bill = −1.232, R² = 0.234 (285 obs). See the [construction of cay](#construction-of-cay) section below for validation details. Future data updates follow the `v2-YYYYMM` convention.
 
 
 ## Data Sources
