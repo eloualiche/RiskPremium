@@ -184,7 +184,10 @@ end
 
 # When run as script
 if abspath(PROGRAM_FILE) == @__FILE__
-    res = compute_cay()
+    # Estimate DOLS on pre-COVID sample (1951Q4–2019Q3) to avoid distortion from
+    # the pandemic period (large swings in transfers, consumption, and asset values).
+    # The estimated coefficients are then applied to the full sample to extend cay.
+    res = compute_cay(estimation_start=Date(1951,10,1), estimation_end=Date(2019,9,30))
     # Write with column names matching Lettau's format: date,c,w,y,cay
     out = rename(res.data, :a => :w)
     CSV.write("input/cay_computed.csv", out)

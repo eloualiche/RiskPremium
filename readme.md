@@ -5,7 +5,7 @@
 
 This code updates the measure of equity risk premium.
 
-We use the dividend-price ratio, cay and the three-month T-bill to predict future excess returns
+I use the dividend-price ratio, cay and the three-month T-bill to predict future excess returns
 
 + *Haddad Valentin, Erik Loualiche, and Matthew Plosser*: **Buyout Activity: the Impact of Aggregate Discount Rates**;  Journal of Finance, February 2017, 72:1
 + [Download the paper](http://loualiche.gitlab.io/www/abstract/LBO.html)
@@ -31,7 +31,9 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
 
 **In v1.0**, cay was downloaded directly from Martin Lettau's [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html), last updated 2019Q3. That series is no longer maintained.
 
-**In v2.0**, we construct cay from publicly available FRED data. The cointegrating vector is estimated on the same sample period as Lettau (1951Q4–2019Q3), and cay is then computed out of sample through the latest available quarter.
+**In v2.0**, I construct cay from publicly available FRED data. The cointegrating vector is estimated on the pre-COVID sample (1951Q4–2019Q3), the same endpoint as Lettau's last update. I deliberately exclude the pandemic period from estimation because COVID produced large, transitory swings in transfers (stimulus payments), consumption (lockdowns), and asset values that would distort the long-run cointegrating relationship. The estimated coefficients are then applied out of sample to compute cay through the latest available quarter.[^covid]
+
+[^covid]: Estimating DOLS on the full sample (including 2020–2025) shifts the cointegrating vector substantially: β_a falls from 0.195 to 0.070 and β_y rises from 0.863 to 0.991. The predictive R² is nearly unchanged (0.234 vs 0.231), but the pre-COVID coefficients are closer to Lettau's published values (β_a = 0.218, β_y = 0.801) and more economically interpretable.
 
 ### Definition
 
@@ -64,7 +66,7 @@ All nominal series are deflated by PCECTPI and divided by population to obtain r
 
 ### Validation against Lettau's published series
 
-We compare our constructed cay to Lettau's published series (1952Q1–2019Q3, 271 quarterly observations) on the same estimation sample. Current FRED vintages differ from Lettau's due to the 2023 NIPA comprehensive revision, which rescaled the PCE deflator by approximately 6%.
+I compare the constructed cay to Lettau's published series (1952Q1–2019Q3, 271 quarterly observations) on the same estimation sample. Current FRED vintages differ from Lettau's due to the 2023 NIPA comprehensive revision, which rescaled the PCE deflator by approximately 6%.
 
 **Component-level accuracy:**
 
@@ -76,7 +78,7 @@ We compare our constructed cay to Lettau's published series (1952Q1–2019Q3, 27
 
 **DOLS coefficients** (estimation sample: 1951Q4–2019Q3):
 
-| | Lettau | Ours |
+| | Lettau | v2.0 |
 |---|---|---|
 | β_a (wealth) | 0.218 | 0.195 |
 | β_y (income) | 0.801 | 0.863 |
@@ -85,7 +87,7 @@ We compare our constructed cay to Lettau's published series (1952Q1–2019Q3, 27
 
 **Impact on predicted risk premium** (264 common observations, 1952Q1–2017Q4):
 
-| | Lettau cay (v1.0) | Our cay (v2.0) |
+| | Lettau cay (v1.0) | Constructed cay (v2.0) |
 |---|---|---|
 | D/P coefficient | 3.370 | 3.385 |
 | cay coefficient | 1.814 | 1.564 |
