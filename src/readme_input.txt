@@ -51,18 +51,26 @@ The cointegrating vector is estimated by Stock-Watson Dynamic OLS (DOLS) with 8 
 |---|---|---|
 | Consumption (c) | [`PCEC`](https://fred.stlouisfed.org/series/PCEC) | Personal Consumption Expenditures, quarterly, SAAR |
 | Asset wealth (a) | [`TNWBSHNO`](https://fred.stlouisfed.org/series/TNWBSHNO) | Households and Nonprofits Net Worth (Z.1) |
+| Labor income (y) | *composite* | See construction below |
+| Price deflator | [`PCECTPI`](https://fred.stlouisfed.org/series/PCECTPI) | PCE Chain-Type Price Index (2017=100) |
+| Population | [`B230RC0Q173SBEA`](https://fred.stlouisfed.org/series/B230RC0Q173SBEA) | BEA Midperiod Population |
+
+All nominal series are deflated by PCECTPI and divided by population to obtain real per-capita values.
+
+**Labor income construction** (Lettau and Ludvigson 2001, Appendix):
+
+`y = wages + transfers + other labor income − social insurance − (labor share × taxes)`
+
+where labor share = (wages + transfers + other labor income − social insurance) / personal income.
+
+| Component | FRED series | Description |
+|---|---|---|
 | Wages and salaries | [`WASCUR`](https://fred.stlouisfed.org/series/WASCUR) | Compensation of Employees: Wages and Salary Accruals |
 | Transfer payments | [`A577RC1Q027SBEA`](https://fred.stlouisfed.org/series/A577RC1Q027SBEA) | Personal Current Transfer Receipts |
 | Other labor income | [`B040RC1Q027SBEA`](https://fred.stlouisfed.org/series/B040RC1Q027SBEA) | Employer Contributions for Employee Pension and Insurance |
 | Social insurance | [`A061RC1Q027SBEA`](https://fred.stlouisfed.org/series/A061RC1Q027SBEA) | Contributions for Government Social Insurance |
 | Personal income | [`PINCOME`](https://fred.stlouisfed.org/series/PINCOME) | Personal Income |
 | Personal taxes | [`W055RC1Q027SBEA`](https://fred.stlouisfed.org/series/W055RC1Q027SBEA) | Personal Current Taxes |
-| Price deflator | [`PCECTPI`](https://fred.stlouisfed.org/series/PCECTPI) | PCE Chain-Type Price Index (2017=100) |
-| Population | [`B230RC0Q173SBEA`](https://fred.stlouisfed.org/series/B230RC0Q173SBEA) | BEA Midperiod Population |
-
-Labor income follows Lettau and Ludvigson (2001, Appendix): wages + transfers + other labor income − social insurance contributions − (labor share × personal taxes), where labor share = pre-tax labor income / personal income.
-
-All nominal series are deflated by PCECTPI and divided by population to obtain real per-capita values.
 
 ### Validation against Lettau's published series
 
