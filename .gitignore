@@ -1,11 +1,12 @@
 # .gitignore file for RiskPremium Repo
 
-
 ## STANDARD EXCLUSIONS
 archive
 docs/*.lyx
 tmp
+log
 .Rhistory
+.claude
 
 # Specific files
 docs/dividendpriceratio.tex
@@ -13,3 +14,9 @@ input/msi.sas7bdat
 
 # Sources
 src/paymon.R
+
+# Superpowers
+docs/superpowers
+
+# Environment
+.env

@@ -15,13 +15,9 @@ I use the dividend-price ratio, cay and the three-month T-bill to predict future
 
 ## Releases
 
-**For the exact replication of the published paper, use [v1.0](https://github.com/eloualiche/RiskPremium/releases/tag/v1.0).**
+**For the exact replication of the published paper, use [v1.0](https://github.com/eloualiche/RiskPremium/releases/tag/v1.0).** That release uses the original R pipeline with Lettau's cay downloaded directly from his [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html) (1952Q1–2019Q3). CRSP data through 2017Q4. Regression coefficients: D/P = 3.370, cay = 1.814, T-bill = −1.246, R² = 0.344 (264 obs).
 
-That release uses the original R pipeline with Lettau's cay downloaded directly from his [website](http://faculty.haas.berkeley.edu/lettau/data_cay.html) (1952Q1–2019Q3). CRSP data through 2017Q4. Regression coefficients: D/P = 3.370, cay = 1.814, T-bill = −1.246, R² = 0.344 (264 obs).
-
-**For updated estimates, use [v2-202603](https://github.com/eloualiche/RiskPremium/releases/tag/v2-202603).**
-
-This release rewrites the pipeline in Julia and constructs cay from publicly available FRED data, removing the dependency on Lettau's website. CRSP data through 2024Q4. DOLS coefficients: β_a = 0.195, β_y = 0.863 (estimation sample: 1951Q4–2019Q3). Regression coefficients: D/P = 2.779, cay = 0.398, T-bill = −1.232, R² = 0.234 (285 obs). See the [construction of cay](#construction-of-cay) section below for validation details. Future data updates follow the `v2-YYYYMM` convention.
+**For updated estimates, use [v2-202603](https://github.com/eloualiche/RiskPremium/releases/tag/v2-202603).** This release rewrites the pipeline in Julia and constructs cay from publicly available FRED data, removing the dependency on Lettau's website. CRSP data through 2024Q4. DOLS coefficients: β_a = 0.195, β_y = 0.863 (estimation sample: 1951Q4–2019Q3). Regression coefficients: D/P = 2.779, cay = 0.398, T-bill = −1.232, R² = 0.234 (285 obs). See the [construction of cay](#construction-of-cay) section below for validation details. Future data updates follow the `v2-YYYYMM` convention.
 
 
 ## Data Sources
@@ -113,26 +109,3 @@ The predicted risk premium from both specifications has correlation 0.997. The m
 ## Latest estimates
 
 
-~~~R
-===========================================================
-                             Future Excess Returns         
------------------------------------------------------------
-D/P ratio                                      2.779***
-                                                (1.021)
-
-cay                                               0.398
-                                                 (0.36)
-
-T-bill (three-month)                          -1.232***
-                                                (0.306)
-
-Constant                                          0.034
-                                                (0.035)
-
-Observations                                        285
-R2                                                0.234
------------------------------------------------------------
-Notes:               ***Significant at the 1 percent level.
-                     **Significant at the 5 percent level. 
-                     *Significant at the 10 percent level. 
-~~~
