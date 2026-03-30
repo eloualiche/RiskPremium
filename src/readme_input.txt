@@ -12,6 +12,12 @@ We use the dividend-price ratio, cay and the three-month T-bill to predict futur
 + [Download the data](https://github.com/eloualiche/RiskPremium/releases)
 
 
+## Releases
+
+- **[v1.0](https://github.com/eloualiche/RiskPremium/releases/tag/v1.0)** --- Published paper version. Uses the original R pipeline with Lettau's cay downloaded from his website (through 2019Q3). Data through 2017Q4. This release corresponds exactly to the estimates in the paper.
+- **v2.0** --- Updated estimates. Rewrites the pipeline in Julia and constructs cay directly from FRED data, removing the dependency on Lettau's website. Extends the sample to the latest available CRSP and FRED data.
+
+
 ## Data Sources
 
 1. **Dividend-price ratio** from CRSP Monthly Stock Market Index (`msi`), available on [WRDS](https://wrds-web.wharton.upenn.edu/wrds/ds/crsp/stock_a/stkmktix.cfm)
