@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:fred.stlouisfed.org)",
       "WebFetch(domain:faculty.haas.berkeley.edu)",
-      "Bash(gh release:*)"
+      "Bash(gh release:*)",
+      "WebFetch(domain:git.loualiche.com)"
     ]
   }
 }

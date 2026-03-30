@@ -1,6 +1,6 @@
 module RiskPremium
 
-using CSV, DataFrames, Dates, Statistics, LinearAlgebra
+using CSV, DataFrames, Dates, Statistics, LinearAlgebra, SpecialFunctions
 using Plots
 pgfplotsx()
 
@@ -103,7 +103,7 @@ end
 
 # Standard normal CDF
 function _Φ(x)
-    return 0.5 * (1.0 + erf(x / sqrt(2.0)))
+    return 0.5 * erfc(-x / sqrt(2.0))
 end
 
 """
@@ -118,6 +118,14 @@ function make_plot(predict::DataFrame)
         1
     )
 
+    # Major ticks every 10 years, minor every 5
+    yr_min = year(dates[1])
+    yr_max = year(dates[end])
+    major_years = (yr_min ÷ 10 * 10):10:(yr_max ÷ 10 * 10 + 10)
+    minor_years = (yr_min ÷ 5 * 5):5:(yr_max ÷ 5 * 5 + 5)
+    xtick_major = Date.(major_years, 1, 1)
+    xtick_minor = Date.(minor_years, 1, 1)
+
     p = plot(dates, 100 .* predict.rmrf_y3;
         label  = "Realized",
         color  = :steelblue,
@@ -126,7 +134,10 @@ function make_plot(predict::DataFrame)
         marker = (:circle, 2, 0.5, :steelblue),
         xlabel = "",
         ylabel = "Returns (percent)",
-        legend = :topleft,
+        legend = :bottomleft,
+        framestyle = :box,
+        xticks = (xtick_major, [string(year(d)) * "-M" * string(month(d)) for d in xtick_major]),
+        minorticks = 2,
     )
     plot!(p, dates, 100 .* predict.exp_rmrf;
         label  = "Expected",
