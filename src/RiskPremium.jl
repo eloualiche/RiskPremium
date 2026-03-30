@@ -148,7 +148,8 @@ function make_plot(predict::DataFrame)
     )
 
     savefig(p, "output/predict.pdf")
-    println("Wrote output/predict.pdf")
+    savefig(p, "output/predict.png")
+    println("Wrote output/predict.pdf and output/predict.png")
 end
 
 # When run as script

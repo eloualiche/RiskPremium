@@ -1,6 +1,6 @@
 # Measuring the Market Risk Premium
 
-![](output/predict.pdf)
+![](output/predict.png)
 
 
 This code updates the measure of equity risk premium.
